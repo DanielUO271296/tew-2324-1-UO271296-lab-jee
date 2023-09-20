@@ -48,7 +48,11 @@ public class HolaMundoServlet extends HttpServlet {
 			 //Tarea 2.Creamos una lista que almacene los nombres de las personas que han entrado a esta página
 			 Vector listado = (Vector)request.getSession().getAttribute("listado");
 			 
-			 //Tarea 2.
+			 //Tarea 3.Buscar en el contexto un atributo de tipo Integer que se llame contador. En caso de
+			 //que no exista, se instanciará con valor 0. 
+			 Integer contador= (Integer) getServletContext().getAttribute("contador");
+			 
+			 //Tarea 2.Comprobamos que no esta vacio
 			 if (listado == null){
 			  listado = new Vector();
 			 }
@@ -59,6 +63,10 @@ public class HolaMundoServlet extends HttpServlet {
 				 listado.addElement(nombre);
 			 }
 			 
+			 //tarea 3.Comprobamos que no existe
+			 if ( contador == null ){
+				 contador = new Integer(1);
+			 }
 			 
 			 out.println("Bienvenido a mi primera página web!");
 			 out.println("</BODY></HTML>");
@@ -73,12 +81,20 @@ public class HolaMundoServlet extends HttpServlet {
 			 }
 			 out.println("<a href=\"index.html\">volver</a>");
 			 
+			 // Establecemos el contador como atributo del context bajo el nombre
+			 // contador. En caso de que ya existiera, sobreescribiría la referencia
+			 // existente con la nueva.
+			 getServletContext().setAttribute("contador",new Integer(contador.intValue()+1));
+
+			
 			 //Para hacer la llamada desde el buscador se seguira este modelo
 			 //http://<servidor>:[<puerto>]/directorio/.../recurso?param1=valor&param2=...
 			 //Asi quedaria:
              //http://localhost:8080/HolaMundoServ/HolaMundoCordial?NombreUsuario=Fulanito
 			 
 			 // http://localhost:8080/HolaMundoServ
+			 out.println("<br><br>" + contador +" visitas");
+
 	}
 
 	/**
