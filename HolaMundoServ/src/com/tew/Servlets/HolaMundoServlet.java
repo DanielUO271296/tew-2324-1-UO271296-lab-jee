@@ -31,6 +31,7 @@ public class HolaMundoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		     String nombre = (String) request.getParameter("NombreUsuario");
 			 response.setCharacterEncoding("UTF-8");
 			 response.setContentType("text/html");
 			 
@@ -40,9 +41,19 @@ public class HolaMundoServlet extends HttpServlet {
 			 out.println("<HTML>");
 			 out.println("<HEAD><TITLE>Hola Mundo!</TITLE></HEAD>");
 			 out.println("<BODY>");
+			 
+			 //Comprobamos que han introducido un nombre y lo imprimimos por pantalla
+			 if ( nombre != null ){
+				 out.println("<br>Hola "+nombre+"<br>");
+				 }
 			 out.println("Bienvenido a mi primera página web!");
 			 out.println("</BODY></HTML>");
-
+			 //Para hacer la llamada desde el buscador se seguira este modelo
+			 //http://<servidor>:[<puerto>]/directorio/.../recurso?param1=valor&param2=...
+			 //Asi quedaria:
+             //http://localhost:8080/HolaMundoServ/HolaMundoCordial?NombreUsuario=Fulanito
+			 
+			 // http://localhost:8080/HolaMundoServ
 	}
 
 	/**
