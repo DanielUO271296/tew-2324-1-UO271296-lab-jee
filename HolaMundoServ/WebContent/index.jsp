@@ -16,8 +16,8 @@ if (request.getParameter("NombreUsuario") != null) {
 }
 %>
 <h1>Bienvenido a mi primera página web!</h1>
-<! -- http://localhost:8080/HolaMundoServ/index.jsp -->
-<! -- http://localhost:8080/HolaMundoServ/index.jsp?NombreUsuario=Fulanito -->
+<!-- http://localhost:8080/HolaMundoServ/index.jsp -->
+<!-- http://localhost:8080/HolaMundoServ/index.jsp?NombreUsuario=Fulanito -->
 
 </body>
 </html>
