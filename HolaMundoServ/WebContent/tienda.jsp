@@ -82,16 +82,19 @@ compilada la JSP, y dentro de un método no se puede hacer import. -->
  <%
  	}
  %>
- <br>
-	 <%
+ 
+ <!--
 	 Integer contador = (Integer)application.getAttribute("contador");
 	 if ( contador == null ){
 	 	contador = new Integer(0);
 	 }
 	 	application.setAttribute("contador",new Integer(contador.intValue()+1));
- 	 %>
- <br>
- <%=contador%> visitas.
+ -->
+    <%@ page language="java" import="com.tew.beans.Counter"%> 
+    
+ 	<jsp:useBean id="contador" class="com.tew.beans.Counter" scope="application"/>
+	<jsp:getProperty property="incrementedValue" name="contador"/> visitas.
+ 
  
  </body>
 </html>
