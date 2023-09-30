@@ -42,15 +42,14 @@ compilada la JSP, y dentro de un método no se puede hacer import. -->
  
  <%
    
-// Recuperamos el objeto almacenado en la sesión bajo la etiqueta "carrito"
+	//Comprobamos si existe el objeto "carrito" en sesión.
+	//Si no existe, lo creamos vacío. Será de tipo HashMap
 	@SuppressWarnings("unchecked")
-	HashMap<String, Integer> carrito = (HashMap<String, Integer>) request.getSession().getAttribute("carrito");
+	HashMap<String,Integer> carrito = (HashMap<String,Integer>)request.getSession().getAttribute("carrito");
+	if ( carrito == null ) {
+		carrito = new HashMap<String, Integer>();
+	}
 
-	// Si no existe, lo creamos vacío. Será de tipo HashMap<String, Integer>.
-	if (carrito == null) {
-   	 carrito = new HashMap<String, Integer>();
-   	 //request.getSession().setAttribute("carrito", carrito); // Almacenamos el carrito en la sesión
-    }
 	
 	//Añadimos el producto recibido al carrito de la compra (en caso de que no sea nulo!)
 	String producto = request.getParameter("producto");
@@ -67,7 +66,7 @@ compilada la JSP, y dentro de un método no se puede hacer import. -->
 	//Añadimos el carrito a la sesión
 	request.getSession().setAttribute("carrito",carrito);
 
-%>
+ %>
  
  	<br>
  	<br>
@@ -83,5 +82,16 @@ compilada la JSP, y dentro de un método no se puede hacer import. -->
  <%
  	}
  %>
+ <br>
+	 <%
+	 Integer contador = (Integer)application.getAttribute("contador");
+	 if ( contador == null ){
+	 	contador = new Integer(0);
+	 }
+	 	application.setAttribute("contador",new Integer(contador.intValue()+1));
+ 	 %>
+ <br>
+ <%=contador%> visitas.
+ 
  </body>
 </html>
