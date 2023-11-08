@@ -44,4 +44,14 @@
  <url-pattern>/rs/*</url-pattern>
  </servlet-mapping>
   
+ <servlet>
+ <servlet-name>resteasy-jsapi</servlet-name>
+ <servlet-class>org.jboss.resteasy.jsapi.JSAPIServlet</servlet-class>
+ <load-on-startup>2</load-on-startup>
+ </servlet>
+ 
+ <servlet-mapping>
+ <servlet-name>resteasy-jsapi</servlet-name>
+ <url-pattern>/rest-jsapi</url-pattern>
+ </servlet-mapping>
 </web-app>
