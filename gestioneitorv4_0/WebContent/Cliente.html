@@ -9,6 +9,11 @@
 	 <script type="text/javascript">
 		 function solicitarDatosAlumnos() {
 			 var alumnos=AlumnosServicesRs.getAlumnos();
+			 Client client = ClientBuilder.newClient();
+			 WebTarget target = client.target("http://localhost:8080/gestioneitorv4_0/pisos.json");
+
+			 String result = target.request().get().readEntity(String.class);
+			 System.out.println(result);
 			 // Obtener el elemento HTML donde ir dejando el resultado
 			 // del servicio
 			 div = document.getElementById("contenido")
